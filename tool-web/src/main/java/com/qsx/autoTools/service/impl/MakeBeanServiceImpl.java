@@ -49,7 +49,7 @@ public class MakeBeanServiceImpl implements MakeBeanService {
 
     private String makeBean(String title, List<Field> fieldList, String titleRemark) {
         StringBuilder bean = new StringBuilder();
-        bean.append(makeRemark(titleRemark)).append("@Data\n").append("public class ").append(title).append(" {\n");
+        bean.append(makeRemark(titleRemark)).append("@Data\n").append("public class ").append(title).append("Model").append(" {\n");
         for (Field field : fieldList) {
             bean.append("\t/**\n\t * ").append(field.getRemark()).append("\n\t */\n");
             bean.append("\tprivate ").append(field.getType()).append(" ").append(field.getName()).append(";\n");
