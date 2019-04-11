@@ -1,6 +1,9 @@
 package com.qsx;
 
 import com.csvreader.CsvWriter;
+import com.google.common.base.Splitter;
+import com.qsx.autoTools.service.FileService;
+import lombok.Data;
 import net.sf.jxls.transformer.XLSTransformer;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -8,13 +11,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -24,6 +30,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -155,4 +162,112 @@ public class RateTest {
 
         System.out.println(lists.parallelStream().reduce(2, (a, b) -> a * b, (a, b) -> a * b));
     }
+
+    @Test
+    public void shijian(){
+        System.out.println(!new Date().after(new Date()));
+    }
+
+    @Test
+    public void DBA() {
+        //for (int j = 201806; j <= 201808; j++) {
+            for (int i = 0; i <= 5000; i++) {
+                int a = i * 10000 ;
+                int b = (i+1) * 10000 ;
+                if ( b > 4440566){
+                    b = 4440566;
+                }
+                if (a > 4440566){
+                    break;
+                }
+                System.out.println(
+                        "delete from qunar_ce_prepay_201903 where  create_time < '2019-04-03' and  id >= "+a+" and id <= "+b+";"
+                        //"update hotel_income_detail201811 set process_flag = 0 where gl_date = '2018-11-13' and id >=" + a + " and id <=" + b + ";"
+                );
+                        //"update hotel_income_detail"+j+" set process_flag = 0 where  id >=" + a + " and id <=" + b + ";");
+            }
+        //}
+    }
+
+    @Test
+    public void table() {
+        for (int j = 2019; j <= 2019; j++) {
+            for (int i = 1; i <= 12; i++) {
+                int b = j * 100 + i;
+                System.out.println(
+                   "create table air_distribute_domestic_confirmed"+b+" like air_distribute_domestic_confirmed201812;"
+                );
+            }
+        }
+    }
+
+    @Test
+    public void sss() {
+        List<String> a = Splitter.on("，").splitToList("维护，拜访，政府关系");
+        for(String s : a){
+            System.out.println("select invoice_num from qpayable.ap_invoice_detail_new where remark like '%"+s+"%' union all");
+        }
+    }
+
+    @Test
+    public void sql() throws IOException {
+        //for (int j = 201806; j <= 201808; j++) {
+        File file = new File( "/tmp/line.sql");
+        FileWriter fileWritter = new FileWriter(file, true);
+        BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
+        List<String> lines = new ArrayList<>();
+        lines.add("use qfarmer;");
+        lines.add("set names utf8mb4;");
+            for (int i = 360; i <= 400; i++) {
+                int a = i * 10000 + 1;
+                int b = i * 10000 + 10000;
+                //System.out.println(
+                //lines.add(   );
+
+
+            }
+
+        for (String line : lines) {
+            bufferWritter.write(line + "\n");
+        }
+        bufferWritter.close();
+        //}
+    }
+
+    @Test
+    public void mapTest(){
+        AAA aaa = new AAA();
+        aaa.setA("asd");
+        aaa.setB("asd");
+        Map<AAA, Integer> map = new HashMap<>();
+        map.put(aaa, 1);
+        AAA bbb = new AAA();
+        bbb.setA("asd");
+        bbb.setB("asd");
+        System.out.println(map.get(bbb));
+    }
+
+    @Data
+    class AAA{
+        private String a;
+        private String b;
+
+        public String getA() {
+            return a;
+        }
+
+        public void setA(String a) {
+            this.a = a;
+        }
+
+        public String getB() {
+            return b;
+        }
+
+        public void setB(String b) {
+            this.b = b;
+        }
+
+    }
+
 }

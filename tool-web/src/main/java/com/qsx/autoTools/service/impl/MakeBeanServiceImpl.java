@@ -6,6 +6,7 @@ import com.qsx.autoTools.bean.Field;
 import com.qsx.autoTools.enums.FieldType;
 import com.qsx.autoTools.service.MakeBeanService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +25,8 @@ import java.util.Map;
 @Service
 public class MakeBeanServiceImpl implements MakeBeanService {
 
+
+    @Override
     public String makeBeanByCreateTableString(String createTable) {
         List<String> createTableList = Splitter.on("\n").trimResults().splitToList(createTable);
 
@@ -34,6 +37,9 @@ public class MakeBeanServiceImpl implements MakeBeanService {
         String title = getTitle(createTableList.get(0));
         List<Field> fieldList = new ArrayList<Field>();
         for (String line : createTableList) {
+            if (StringUtils.isEmpty(line)){
+                continue;
+            }
             Field field = new Field();
             String fieldName = getFieldName(line);
             String fieldType = getFieldType(line, fieldTypeMap);
