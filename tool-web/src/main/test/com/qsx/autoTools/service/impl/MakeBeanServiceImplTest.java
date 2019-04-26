@@ -158,23 +158,57 @@ public class MakeBeanServiceImplTest {
     }
 
     @Test
-    public void sql3(){
-        for (int a = 2017; a<=2019; a++){
-            for (int b = 1; b <= 12 ; b++){
-                System.out.println("ALTER  TABLE  qwatson.`ce_qunar_prepay_"+String.valueOf(a*100+b)+"`  ADD  column (`business_scope` varchar(10) NOT NULL DEFAULT '' COMMENT '业务范围');");
-            }
-        }
-        for (int a = 2017; a<=2019; a++){
-            for (int b = 1; b <= 12 ; b++){
-                System.out.println("ALTER  TABLE  qwatson.`qunar_ce_cash_"+String.valueOf(a*100+b)+"`  ADD  column (`business_scope` varchar(10) NOT NULL DEFAULT '' COMMENT '业务范围');");
-            }
-        }
-        for (int a = 2017; a<=2019; a++){
-            for (int b = 1; b <= 12 ; b++){
-                System.out.println("ALTER  TABLE  qwatson.`qunar_ce_prepay_"+String.valueOf(a*100+b)+"`  ADD  column (`business_scope` varchar(10) NOT NULL DEFAULT '' COMMENT '业务范围');");
-            }
+    public void sql5() {
+        String a = "Q0020\n" + "Q0022\n" + "Q0040\n" + "Q0020\n" + "Q0022\n" + "Q0024\n" + "Q0025\n" + "Q0027\n"
+                + "Q0030\n" + "Q0034\n" + "Q0038\n" + "Q0040\n" + "Q0041\n" + "Q0042\n" + "Q0195\n" + "Q0291\n"
+                + "Q0323\n" + "Q0130\n" + "Q0116";
+        String b = "票务配置终端费\n" + "票务配置终端费\n" + "票务配置终端费\n" + "外包服务费\n" + "外包服务费\n" + "外包服务费\n" + "外包服务费\n" + "外包服务费\n"
+                + "外包服务费\n" + "外包服务费\n" + "外包服务费\n" + "外包服务费\n" + "外包服务费\n" + "外包服务费\n" + "外包服务费\n" + "外包服务费\n"
+                + "外包服务费\n" + "刷卡手续费\n" + "保险费\n";
+        String c = "6501.10\n" + "6501.10\n" + "6501.10\n" + "6607.12\n" + "6607.12\n" + "6607.12\n" + "6607.12\n"
+                + "6607.12\n" + "6607.12\n" + "6607.12\n" + "6607.12\n" + "6607.12\n" + "6607.12\n" + "6607.12\n"
+                + "6607.12\n" + "6607.12\n" + "6607.12\n" + "6501.25\n" + "6501.37\n";
+        String d = "主营业务成本（新）.票务配置终端费\n" + "主营业务成本（新）.票务配置终端费\n" + "主营业务成本（新）.票务配置终端费\n" + "销售费用（新）.外包服务费\n"
+                + "销售费用（新）.外包服务费\n" + "销售费用（新）.外包服务费\n" + "销售费用（新）.外包服务费\n" + "销售费用（新）.外包服务费\n" + "销售费用（新）.外包服务费\n"
+                + "销售费用（新）.外包服务费\n" + "销售费用（新）.外包服务费\n" + "销售费用（新）.外包服务费\n" + "销售费用（新）.外包服务费\n" + "销售费用（新）.外包服务费\n"
+                + "销售费用（新）.外包服务费\n" + "销售费用（新）.外包服务费\n" + "销售费用（新）.外包服务费\n" + "主营业务成本（新）.刷卡手续费\n" + "主营业务成本（新）.保险费\n";
+        String e = "1213\n" + "1214\n";
+        List list1 = Splitter.on("\n").splitToList(a);
+        List list2 = Splitter.on("\n").splitToList(b);
+        List list3 = Splitter.on("\n").splitToList(c);
+        List list4 = Splitter.on("\n").splitToList(d);
+        List list5 = Splitter.on("\n").splitToList(e);
+        for (int i = 0; i < list1.size(); i++) {
+            System.out.println(
+                    "INSERT INTO qreaper.ctrip_account_mapping (expense_dept_code, expense_dept_name, expense_dept_attribute, first_subject, cost_detail, second_subject, account_subject_code, create_by, create_time, last_update_by, last_update_time, delete_flag) VALUES ('"+list1.get(i)+"', '', '', '', '"+list2.get(i)+"', '"+list4.get(i)+"', '"+list3.get(i)+"', '', now(), '', now(), 0);");
         }
     }
+
+    @Test
+    public void sql6() {
+        String a = "霍尔果斯千优航空服务有限公司\n" + "海南乐虎商务服务有限公司\n" + "湖北省中国旅行社武汉分公司\n" + "霍尔果斯千优航空服务有限公司";
+        String b = "洛阳=海口（二期）\n" + "南宁=珠海=梅县（三期）\n" + "哈尔滨=襄阳=海口\n" + "南宁=赣州=济南（二期）\n";
+        String c = "4777614.22\n" + "25146801.5\n" + "36590600\n" + "-1085425.57\n";
+        String d = "net\n" + "net\n" + "net\n" + "net\n" + "net\n" + "gross\n" + "gross\n" + "net\n" + "net\n" + "net\n"
+                + "net\n" + "net\n" + "net\n" + "net\n" + "net\n" + "net\n" + "net\n" + "net\n" + "net\n" + "net\n"
+                + "gross\n" + "gross\n" + "net\n";
+        String e = "三亚=暹粒（二期）\n" + "三亚=芭提雅（二期）\n" + "三亚=金边（二期）\n" + "海口=琅勃拉邦（二期）\n" + "海口=万象（二期）\n" + "南宁=赣州=济南（二期）\n"
+                + "哈尔滨=襄阳=海口\n" + "三亚=泗水\n" + "万州=芭提雅\n" + "三亚=新山=吉隆坡\n" + "三亚=吉隆坡\n" + "海口=新山=吉隆坡\n" + "海口=泗水\n"
+                + "烟台=南宁=富国岛\n" + "烟台=南宁=卡利博\n" + "万州=珠海一期\n" + "海口=大同=天津\n" + "三亚=雅加达（二期）\n" + "海口=雅加达（二期）\n"
+                + "广州=岘港（三期）\n" + "洛阳=海口（二期）\n" + "南宁=珠海=梅县\n" + "深圳=怀化=天津\n";
+        List list1 = Splitter.on("\n").splitToList(a);
+        List list2 = Splitter.on("\n").splitToList(b);
+        List list3 = Splitter.on("\n").splitToList(c);
+        List list4 = Splitter.on("\n").splitToList(d);
+        List list5 = Splitter.on("\n").splitToList(e);
+        for (int i = 0; i < list1.size(); i++) {
+            //System.out.println("  - field: "+list1.get(i)+"\n" + "    type: string\n" + "    comment: \""+list2.get(i)+" \"");
+            //System.out.println("INSERT INTO qfarmer.air_bj_contract_rules (contract_code, fin_company, charter_merchant, cooperation_model, route_name, create_by, create_time, last_update_by, last_update_time) VALUES ('"+list1.get(i)+"', '"+list2.get(i)+"', '"+list3.get(i)+"', '"+list4.get(i)+"', '"+list5.get(i)+"', 'system', now(), 'system', now());");
+            System.out.println("INSERT INTO qwatson.air_bj_profit201902 (revenue_type, fin_company, charter_merchant, contract_start_date, contract_end_date, contract_num, cooperation_model, route_name, flight_date, passenger_number, layout, individual_number, group_number, group_revenue, individual_revenue, additional_tax, refund_revenue, group_channel_fee, individual_channel_fee, group_balance, total_tickets_lost, individual_cost, group_cost, group_balance_adjust, tickets_lost_adjust, group_cost_adjust, individual_cost_adjust, total_revenue, total_cost, accumulative_profit, booking_passenger_number, booking_layout, booking_revenue, booking_cost, flight_management_fee, accumulative_booking_profit, profit_adjust, accumulative_booking_revenue, accumulative_booking_cost, booking_cost_adjust, client, gl_period, business_scope, create_by, create_time, last_update_by, last_update_time, process_flag, summary_num) VALUES ('包机', 'Q013C_1', '"+ list1
+                    .get(i)+"', '2018-05-20 00:00:00', '2019-05-19 00:00:00', 'ZBJ20180821114331', 'gross', '"+list2.get(i)+"', '2019-02-09 00:00:00', 0, '1110', 0, 0, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0, '555', 0.00, 0.00, 0.00, "+list3.get(i)+", 0.00, 0.00, 0.00, 0.00, 'mob', '2019-01', '国内', '', now(), '', now(), 0, '');");
+        }
+    }
+
 
     @Test
     public void test(){

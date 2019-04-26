@@ -195,8 +195,7 @@ public class RateTest {
             for (int i = 1; i <= 12; i++) {
                 int b = j * 100 + i;
                 System.out.println(
-                   "create table air_distribute_domestic_confirmed"+b+" like air_distribute_domestic_confirmed201812;"
-                );
+                "create TABLE air_bj_profit"+b+" like air_bj_profit201901;");
             }
         }
     }
