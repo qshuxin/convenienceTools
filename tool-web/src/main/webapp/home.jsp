@@ -11,6 +11,6 @@
     <title>欢迎</title>
 </head>
 <body>
-<h1 align="center">功能一：<a href="/makeBean.jsp">建表语句生成实体类</a></h1>
+<h1 align="center">功能一：<a href="makeBean.jsp">建表语句生成实体类</a></h1>
 </body>
 </html>

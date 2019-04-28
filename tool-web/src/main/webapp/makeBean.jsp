@@ -13,7 +13,7 @@
 </head>
 <body>
 <div style="padding: 100px 100px 10px;">
-    <form class="bs-example bs-example-form" role="form" action="/upload" method="post">
+    <form class="bs-example bs-example-form" role="form" action="upload" method="post">
         <div class="input-group input-group-lg">
             <span class="input-group-addon">数据库建表语句</span><br>
             <textarea class="form-control" rows="10" cols="100" placeholder="" id="createTable" name="createTable">${requestScope.source}</textarea>
