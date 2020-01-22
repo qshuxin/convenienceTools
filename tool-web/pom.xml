@@ -23,22 +23,22 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>5.0.3.RELEASE</version>
+            <version> 5.2.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>5.0.3.RELEASE</version>
+            <version>5.2.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.0.3.RELEASE</version>
+            <version>5.2.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>5.0.3.RELEASE</version>
+            <version>5.2.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.apache.taglibs</groupId>
@@ -48,12 +48,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>5.0.3.RELEASE</version>
+            <version>5.2.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
-            <version>5.0.3.RELEASE</version>
+            <version>5.2.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>cglib</groupId>
